@@ -1,0 +1,72 @@
+<!--form class="form-horizontal" >
+  <div class="form-group">
+    <div class="col-sm-5">
+      <label for="nomeCurso" class="control-label">Descrição</label>
+    </div>
+
+    <div class="col-sm-4">
+      <input type="text" class="form-control"
+        id="nomeCurso" placeholder="Descrição"
+        [(ngModel)] = "nome" name="nome" />
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-5">
+      <label for="tempoDuracao" class="control-label" >Duração</label>
+    </div>
+
+    <div class="col-sm-4">
+      <input type="text" class="form-control"
+      id="tempoDuracao" placeholder="Carga horária"
+       [(ngModel)] = "duracao" name="duracao"/>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary"
+  (click)="adicionaCurso()">Salvar</button>
+  <button class="btn" (click)="resetaForm()" >Cancelar</button>
+
+  </form>
+<br><br -->
+  <form [formGroup]="formCursos" (ngSubmit)="onSubmit(formCursos.value)">
+    <p-panel header="Clavas Cursos">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 5px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1">
+                    Descrição:
+                </div>
+                <div class="ui-grid-col-5">
+                    <input pInputText type="text" name="nome"
+                     formControlName = "curso" placeholder="Java basic"
+                     pTooltip="Descrição do curso" #nome/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1">
+                    Duração:
+                </div>
+                <div class="ui-grid-col-5">
+                    <input pInputText type="text" name="duracao"
+                    formControlName = "tempo" placeholder="45Hrs"
+                    pTooltip="Duração de curso" #duracao/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  <button pButton type="submit" label="Salvar" [disabled]="!formCursos.valid"
+                  (click)="adicionaCurso(nome.value, duracao.value)" ></button>
+              </div>
+              <div class="ui-grid-col-2">
+                  <button pButton type="submit" label="cancelar" [disabled]="!formCursos.valid"
+                  (click)="resetaForm()"></button>
+              </div>
+           </div>
+
+
+
+<!-- https://www.primefaces.org/primeng/#/validation -->
+
+        </div>
+    </p-panel>
+</form>

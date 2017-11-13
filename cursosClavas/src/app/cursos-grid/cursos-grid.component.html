@@ -1,0 +1,51 @@
+
+<p-fieldset legend="Curso Disponiveis" [toggleable]="true">
+<table class="table">
+  <thead>
+    <tr>
+        <td>id</td>
+        <td>Curso</td>
+        <td>Duracao</td>
+        <td>Alterar</td>
+        <td>Excluir</td>
+    </tr>
+  </thead>
+ <tbody>
+  <tr *ngFor="let curso of listaDeCursos">
+    <td>{{ curso.id }}</td>
+    <td>
+      <div class="col-sm-10">
+        <input pInputText type="text" value="{{ curso.nome }}" name="nomeInput" #nomeInput>
+      </div>
+    </td>
+    <td>
+      <div class="col-10">
+          <input type= "text" class ="input" field="nome" value="{{ curso.duracao }}" name = "duracaoInput" #duracaoInput>
+      </div>
+    </td>
+    <td><button type="button" class="btn btn-danger"
+      (click)="excluirCurso(curso.id)"> Excluir</button></td>
+    <td> <button type="button" class ="btn btn-primary"
+      (click)="modificarCursos(curso.id, nomeInput.value, duracaoInput.value)">Alterar</button></td>
+  </tr>
+  </tbody>
+</table>
+</p-fieldset>
+<!--tr *ngFor="let curso of listaDeCursos">
+  <td>{{ curso.id }}</td>
+  <td>{{ curso.nome }}</td>
+  <td>{{ curso.duracao }}</td>
+</tr -->
+
+
+
+
+<!--div class="ui-g">
+  <div class="ui-g-12">
+    <p-dataTable >
+      <p-column field="nome"></p-column>
+      <p-column field="duracao"></p-column>
+    </p-dataTable>
+  </div>
+</div-->
+
