@@ -32,7 +32,7 @@ export class FormCursoComponent implements OnInit {
     this.formCursos.reset();
   }
 
-  adicionaCurso(nome: string, duracao: string): void {
+  adicionaCurso(nome: string , duracao: string ): void {
     const cursoAdd = {
     nome: this.nome,
     duracao: this.duracao
@@ -41,16 +41,16 @@ export class FormCursoComponent implements OnInit {
       this.http.post('http://localhost:8080/', cursoAdd).subscribe(
        data => {
         this.clavasEvent.emit(data);
-
        }
       );
         this.onSubmit();
+    } else {
+      alert('erro!');
     }
   }
   onSubmit(): void {
-    this.submitted = true;
     this.msgs = [];
-    this.msgs.push({severity: 'info', summary: 'Success', detail: 'Curso ' + this.nome + ' com duração de' +
+    this.msgs.push({severity: 'success', summary: 'Success', detail: 'Curso ' + this.nome + ' com duração de' +
     this.duracao + ' adicionado com sucesso!'});
 }
 

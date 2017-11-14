@@ -1,6 +1,6 @@
 
-<p-fieldset legend="Curso Disponiveis" [toggleable]="true">
-<table class="table">
+
+<!--table class="table">
   <thead>
     <tr>
         <td>id</td>
@@ -30,22 +30,19 @@
   </tr>
   </tbody>
 </table>
-</p-fieldset>
+
 <!--tr *ngFor="let curso of listaDeCursos">
   <td>{{ curso.id }}</td>
   <td>{{ curso.nome }}</td>
   <td>{{ curso.duracao }}</td>
 </tr -->
 
-
-
-
-<!--div class="ui-g">
-  <div class="ui-g-12">
-    <p-dataTable >
-      <p-column field="nome"></p-column>
-      <p-column field="duracao"></p-column>
-    </p-dataTable>
-  </div>
-</div-->
-
+<p-dataTable [value]="listaDeCursos" [editable]="true">
+    <p-header>Cursos Disponíveis</p-header>
+  <p-column field="id" header="id" [editable]="false"></p-column>
+  <p-column field="nome" header="Descrição" [editable]="true"></p-column>
+  <p-column field="duracao" header="Duração" [editable]="true"></p-column>
+  <p-column header="Excluir">
+  <button type="button" (click)="excluirCurso()" pButton icon="fa-trash" label="Delete"></button>
+  </p-column>
+</p-dataTable>

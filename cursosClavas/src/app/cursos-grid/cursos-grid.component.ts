@@ -1,3 +1,5 @@
+import { Message } from 'primeng/components/common/api';
+import {LazyLoadEvent} from 'primeng/primeng';
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
@@ -8,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cursos-grid.component.css']
 })
 export class CursosGridComponent implements OnInit {
+  msgs: Message[] = [];
 
 
  @Input('listaDeCursos') listaDeCursos: any = {};
@@ -47,6 +50,5 @@ ngOnInit() {
   listaAtualizada(clavasEvent) {
     this.listaDeCursos = clavasEvent;
   }
-
 
 }
