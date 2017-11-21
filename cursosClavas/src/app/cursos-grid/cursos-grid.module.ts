@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CursosGridComponent } from './cursos-grid.component';
-import {DataTableModule, SharedModule} from 'primeng/primeng';
+import {ConfirmDialogModule, DataTableModule,  SharedModule} from 'primeng/primeng';
 import {FieldsetModule} from 'primeng/primeng';
 
 @NgModule({
@@ -15,7 +15,8 @@ import {FieldsetModule} from 'primeng/primeng';
     HttpClientModule,
     ReactiveFormsModule,
     ButtonModule,
-    FieldsetModule
+    FieldsetModule,
+    ConfirmDialogModule
   ],
   declarations: [
     CursosGridComponent

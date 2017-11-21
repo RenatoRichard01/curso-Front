@@ -8,32 +8,31 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./pesquisa.component.css']
 })
 export class PesquisaComponent implements OnInit {
-/*
+
   @Output() clavasEvent = new EventEmitter();
   nomeCurso: string;
 
   constructor(private http: HttpClient) { }
-*/
+
   ngOnInit() {
   }
-/*
+
 buscarCurso() {
 if (this.nomeCurso !== '') {
- this.http.get('http://localhost:8080/pesquisarNome/' + this.nomeCurso).subscribe(
+ this.http.get('http://localhost:8080/' + this.nomeCurso).subscribe(
     data => {
          this.clavasEvent.emit(data);
      }
   );
  } else {
-   this.http.get ('http://localhost:8080//cursoLista')
+   this.http.get ('http://localhost:8080/')
    .subscribe(
     data => {
       this.clavasEvent.emit(data);
     }
   );
-  alert('erro');
+  alert('curso não encontrado');
 }
 
 }
-*/
 }

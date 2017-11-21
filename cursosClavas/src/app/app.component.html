@@ -1,8 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
     <!--app-cursos-grid-- [listaDeCursos]="listaDeCursos"></app-cursos-grid-->
 
-    <form-curso (clavasEvent)="listaAtualizada($event)" ></form-curso>
-    <app-pesquisa></app-pesquisa>
-    <br><br><br><br>
+    <form-curso (clavasEvent)="listaAtualizada($event)"></form-curso>
+    <app-pesquisa (clavasEvent)="listaAtualizada($event)"></app-pesquisa>
     <app-cursos-grid  [listaDeCursos]="listaDeCursos"></app-cursos-grid>
-

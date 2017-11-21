@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit  {
     listaDeCursos: any = [];
+
     constructor(private http: HttpClient) { }
 
     ngOnInit(): void {
@@ -18,6 +19,9 @@ export class AppComponent implements OnInit  {
           this.listaDeCursos = data;
         }
       );
+    }
+    listaAtualizada(evento) {
+      this.listaDeCursos = evento;
     }
 
 }

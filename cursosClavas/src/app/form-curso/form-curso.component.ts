@@ -1,5 +1,3 @@
-import { Diagnostic } from '@angular/compiler-cli/ngtools2';
-
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -13,18 +11,18 @@ import { Message } from 'primeng/components/common/api';
 export class FormCursoComponent implements OnInit {
   msgs: Message[] = [];
   formCursos: FormGroup;
-  submitted: boolean;
-  @Output() clavasEvent = new EventEmitter();
+  @Output() evento = new EventEmitter();
   nome: string;
   duracao: string;
 
 
   constructor(private http: HttpClient,
   private vl: FormBuilder) { }
+
   ngOnInit() {
     this.formCursos = this.vl.group({
-      curso: new FormControl('', Validators.required),
-      tempo: new FormControl('', Validators.required)
+      'nome': new FormControl('', Validators.required),
+      'duracao': new FormControl('', Validators.required)
     });
   }
 
@@ -32,26 +30,26 @@ export class FormCursoComponent implements OnInit {
     this.formCursos.reset();
   }
 
-  adicionaCurso(nome: string , duracao: string ): void {
-    const cursoAdd = {
-    nome: this.nome,
-    duracao: this.duracao
-    };
-    if ((this.nome !== undefined) && (this.duracao !== undefined)) {
-      this.http.post('http://localhost:8080/', cursoAdd).subscribe(
+  adicionaCurso(): void {
+    if ((this.nome !== '') && (this.duracao !== '')) {
+      this.http.post('http://localhost:8080/', this.formCursos.value).subscribe(
        data => {
-        this.clavasEvent.emit(data);
+        this.evento.emit(data);
+        this.adicionado();
        }
       );
-        this.onSubmit();
     } else {
       alert('erro!');
     }
   }
-  onSubmit(): void {
+
+  adicionado(): void {
     this.msgs = [];
-    this.msgs.push({severity: 'success', summary: 'Success', detail: 'Curso ' + this.nome + ' com duração de' +
-    this.duracao + ' adicionado com sucesso!'});
+    this.msgs.push({severity: 'success', summary: 'Success', detail: 'Curso adicionado'});
 }
+  erroAdiciona(): void {
+    this.msgs = [];
+    this.msgs.push({severity: 'error', detail: 'Curso não foi adicionado. Possivel problema no servidor'});
+  }
 
 }

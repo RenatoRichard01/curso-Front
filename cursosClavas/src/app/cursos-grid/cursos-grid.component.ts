@@ -10,10 +10,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cursos-grid.component.css']
 })
 export class CursosGridComponent implements OnInit {
+
   msgs: Message[] = [];
 
-
- @Input('listaDeCursos') listaDeCursos: any = {};
+@Input('listaDeCursos') listaDeCursos: any = {};
 
 constructor(private http: HttpClient) { }
 ngOnInit() {
@@ -24,7 +24,7 @@ ngOnInit() {
       this.listaDeCursos = data;
   });
   }
-
+/*
   modificarCursos(id, nomeInput, duracaoInput) {
     if ((id !== undefined) && (nomeInput !== '') && (duracaoInput !== '')) {
       const curso = {
@@ -32,7 +32,7 @@ ngOnInit() {
         nome: nomeInput,
         duracao: duracaoInput
       };
-      this.http.put('http://localhost:8080/alteraCurso', curso)
+      this.http.put('http://localhost:8080/', curso)
       .subscribe(
           data => {
             this.listaDeCursos = data;
@@ -40,7 +40,7 @@ ngOnInit() {
         );
         alert('id: ' +  id + 'alterado com sucesso');
     } else {
-      this.http.get('http://localhost:8080/cursoLista').subscribe
+      this.http.get('http://localhost:8080/').subscribe
       (data => {
         this.listaDeCursos = data;
       });
@@ -50,5 +50,5 @@ ngOnInit() {
   listaAtualizada(clavasEvent) {
     this.listaDeCursos = clavasEvent;
   }
-
+*/
 }
