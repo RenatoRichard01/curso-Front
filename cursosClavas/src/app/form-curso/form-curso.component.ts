@@ -38,6 +38,7 @@ export class FormCursoComponent implements OnInit {
         this.adicionado();
        }
       );
+      this.resetaForm();
     } else {
       alert('erro!');
     }

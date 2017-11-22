@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
@@ -8,18 +9,25 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./pesquisa.component.css']
 })
 export class PesquisaComponent implements OnInit {
+  formCursos: FormGroup;
 
   @Output() clavasEvent = new EventEmitter();
   nomeCurso: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private vl: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.formCursos = this.vl.group({
+      'nome': new FormControl('', Validators.required),
+    });
+
   }
 
 buscarCurso() {
-if (this.nomeCurso !== '') {
- this.http.get('http://localhost:8080/' + this.nomeCurso).subscribe(
+if (this.formCursos.value.nome !== null) {
+ this.http.get('http://localhost:8080/?nome=' + this.formCursos.value.nome).subscribe(
     data => {
          this.clavasEvent.emit(data);
      }

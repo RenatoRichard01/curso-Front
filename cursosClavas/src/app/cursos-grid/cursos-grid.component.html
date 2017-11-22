@@ -29,32 +29,50 @@
   </tbody>
 </table>
 -->
-<p-dataTable [value]="listaDeCursos" [rows]="10" [paginator]="true"
-[pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" selectionMode="single">
+<p-growl [(value)]="msgs"></p-growl>
+<p-confirmDialog></p-confirmDialog>
+<form [formGroup]="formCursos">
+<p-dataTable [value]="listaDeCursos" selectionMode="single"
+[(selection)]="cursoSelected" (onRowSelect)="onRowSelect($event)" [rows]="10"
+[paginator]="true" [pageLinks]="3" >
   <p-header>
     Cursos Disponíveis
   </p-header>
-<p-column field="id" header="id" ></p-column>
-  <!--ng-template let-curso="rowData" pTemplate="body">
-        <input pInputText type="text" value="{{curso.id}}" name="nomeInput" >
-  </ng-template-->
-<p-column field="nome" header="Descrição">
-    <!--ng-template let-curso="rowData" pTemplate="body">
-        <input pInputText type="text" value="{{curso.nome}}" name="nomeInput" >
-    </ng-template-->
-</p-column>
-<p-column field="duracao" header="Duração" >
-
-    <!--ng-template let-curso="rowData" pTemplate="body">
-        <input type= "text" class ="input" field="nome" value="{{ curso.duracao }}" name = "duracaoInput" #duracaoInput>
-    </ng-template-->
-
-</p-column>
-<p-column styleClass="col-button">
-  <ng-template let-curso="rowData" pTemplate="body">
-      <button type="button" pButton  icon="fa-trash"
-      (click)="excluirCurso(curso.id)"></button>
-      <button type="button" pButton icon="fa-edit"></button>
-  </ng-template>
-</p-column>
+<p-column field="id" header="id" [sortable]="true"></p-column>
+<p-column field="nome" header="Descrição" [sortable]="true"></p-column>
+<p-column field="duracao" header="Duração" [sortable]="true"></p-column>
 </p-dataTable>
+
+<p-dialog header="Faça mudanças" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" *ngIf="curso">
+  <div class="ui-grid ui-grid-responsive ui-fluid">
+      <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="id">id</label></div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="id" formControlName="id"[(ngModel)]="curso.id"/>
+          </div>
+      </div>
+      <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <label for="nome">Descrição</label>
+          </div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="nome" formControlName="nome" [(ngModel)]="curso.nome" />
+          </div>
+      </div>
+      <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <label for="duracao">Duracao</label>
+          </div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="duracao" formControlName="duracao" [(ngModel)]="curso.duracao" />
+          </div>
+      </div>
+  </div>
+  <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button type="button" pButton icon="fa-close" (click)="excluirCurso(curso.id)" label="Delete"></button>
+          <button type="button" pButton icon="fa-check" (click)="modificarCurso()" label="Save"></button>
+      </div>
+  </p-footer>
+</p-dialog>
+</form>

@@ -5,10 +5,11 @@
   (click)="buscarCurso()">Buscar</button>
 </div -->
 
-
-<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+<form [formGroup]="formCursos">
+  <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
         <div class="ui-inputgroup">
-            <button pButton type="button" label="Search"></button>
-            <input type="text" pInputText placeholder="Buscar por nome">
+            <button pButton type="button" label="Search" (click)="buscarCurso()"></button>
+            <input type="text" pInputText formControlName="nome" placeholder="Buscar por nome">
         </div>
-</div>
+  </div>
+</form>
