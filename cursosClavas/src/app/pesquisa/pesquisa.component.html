@@ -1,15 +1,9 @@
-<!--div class="col-sm-4">
-  <input type="text" class="form-control" placeholder="Pesquisar por curso"
-  [(ngModel)]="nomeCurso" name="nomeCurso">
-  <button type="submit" class="btn btn-4"
-  (click)="buscarCurso()">Buscar</button>
-</div -->
-
 <form [formGroup]="formCursos">
   <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
         <div class="ui-inputgroup">
-            <button pButton type="button" label="Search" (click)="buscarCurso()"></button>
+            <button pButton type="button" label="pesquisar" (click)="buscarCurso()"></button>
             <input type="text" pInputText formControlName="nome" placeholder="Buscar por nome">
+            <button pButton type="button" label="Cancelar" (click)="listarTodos()"></button>
         </div>
   </div>
 </form>

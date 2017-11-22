@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CursosGridComponent } from './cursos-grid.component';
 import { ConfirmDialogModule, DataTableModule, SharedModule, GrowlModule,
-          DialogModule, CodeHighlighterModule } from 'primeng/primeng';
+          DialogModule, CodeHighlighterModule, SliderModule } from 'primeng/primeng';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { ConfirmDialogModule, DataTableModule, SharedModule, GrowlModule,
     ConfirmDialogModule,
     DialogModule,
     CodeHighlighterModule,
-    GrowlModule
+    GrowlModule,
+    SliderModule
   ],
   declarations: [
     CursosGridComponent

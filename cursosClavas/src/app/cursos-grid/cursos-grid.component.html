@@ -1,46 +1,18 @@
-<!--table class="table">
-  <thead>
-    <tr>
-        <td>id</td>
-        <td>Curso</td>
-        <td>Duracao</td>
-        <td>Alterar</td>
-        <td>Excluir</td>
-    </tr>
-  </thead>
- <tbody>
-  <tr *ngFor="let curso of listaDeCursos">
-    <td>{{ curso.id }}</td>
-    <td>
-      <div class="col-sm-10">
-        <input pInputText type="text" value="{{ curso.nome }}" name="nomeInput" #nomeInput>
-      </div>
-    </td>
-    <td>
-      <div class="col-10">
-          <input type= "text" class ="input" field="nome" value="{{ curso.duracao }}" name = "duracaoInput" #duracaoInput>
-      </div>
-    </td>
-    <td><button type="button" class="btn btn-danger"
-      (click)="excluirCurso(curso.id)"> Excluir</button></td>
-    <td> <button type="button" class ="btn btn-primary"
-      (click)="modificarCursos(curso.id, nomeInput.value, duracaoInput.value)">Alterar</button></td>
-  </tr>
-  </tbody>
-</table>
--->
 <p-growl [(value)]="msgs"></p-growl>
 <p-confirmDialog></p-confirmDialog>
 <form [formGroup]="formCursos">
-<p-dataTable [value]="listaDeCursos" selectionMode="single"
-[(selection)]="cursoSelected" (onRowSelect)="onRowSelect($event)" [rows]="10"
-[paginator]="true" [pageLinks]="3" >
-  <p-header>
-    Cursos Disponíveis
-  </p-header>
-<p-column field="id" header="id" [sortable]="true"></p-column>
-<p-column field="nome" header="Descrição" [sortable]="true"></p-column>
-<p-column field="duracao" header="Duração" [sortable]="true"></p-column>
+  <p-dataTable [value]="listaDeCursos" selectionMode="single"
+    [(selection)]="cursoSelected" (onRowSelect)="onRowSelect($event)" [rows]="10"
+    [paginator]="true" [pageLinks]="3" >
+      <p-header>
+        Cursos Disponíveis
+      </p-header>
+      <p-column field="id" header="id" [sortable]="true"></p-column>
+      <p-column field="nome" header="Descrição" [sortable]="true"></p-column>
+      <p-column field="duracao" header="Duração" [sortable]="true"></p-column>
+      <ng-template pTemplate="paginatorLeft">
+          <button type="button" pButton icon="fa-refresh"></button>
+      </ng-template>
 </p-dataTable>
 
 <p-dialog header="Faça mudanças" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" *ngIf="curso">

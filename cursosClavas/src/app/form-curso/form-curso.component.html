@@ -1,34 +1,3 @@
-<!--form class="form-horizontal" >
-  <div class="form-group">
-    <div class="col-sm-5">
-      <label for="nomeCurso" class="control-label">Descrição</label>
-    </div>
-
-    <div class="col-sm-4">
-      <input type="text" class="form-control"
-        id="nomeCurso" placeholder="Descrição"
-        [(ngModel)] = "nome" name="nome" />
-
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-5">
-      <label for="tempoDuracao" class="control-label" >Duração</label>
-    </div>
-
-    <div class="col-sm-4">
-      <input type="text" class="form-control"
-      id="tempoDuracao" placeholder="Carga horária"
-       [(ngModel)] = "duracao" name="duracao"/>
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary"
-  (click)="adicionaCurso()">Salvar</button>
-  <button class="btn" (click)="resetaForm()" >Cancelar</button>
-
-  </form>
-<br><br -->
 <p-growl [value]="msgs" sticky="sticky"></p-growl>
   <form [formGroup]="formCursos">
     <p-panel header="Clavas Cursos">
@@ -54,7 +23,7 @@
                     Duração:
                 </div>
                 <div class="ui-grid-col-5">
-                    <input pInputText type="text" formControlName="duracao"
+                    <input pInputText type="number" formControlName="duracao"
                     placeholder="45Hrs" pTooltip="Duração de curso" />
                 </div>
                 <div class="ui-grid-col-4">

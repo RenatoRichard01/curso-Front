@@ -13,6 +13,8 @@ import { Curso } from './../curso';
   providers: [ConfirmationService]
 })
 export class CursosGridComponent implements OnInit {
+  hourTimeout: any;
+  hourFilter: number;
   formCursos: FormGroup;
   msgs: Message[] = [];
   curso: Curso = new PrimeCurso();
@@ -62,33 +64,6 @@ cloneCurso(c: Curso): Curso {
         this.displayDialog = false;
   }
 
-/*
-  modificarCursos(id, nomeInput, duracaoInput) {
-    if ((id !== undefined) && (nomeInput !== '') && (duracaoInput !== '')) {
-      const curso = {
-        id: id,
-        nome: nomeInput,
-        duracao: duracaoInput
-      };
-      this.http.put('http://localhost:8080/', curso)
-      .subscribe(
-          data => {
-            this.listaDeCursos = data;
-          }
-        );
-        alert('id: ' +  id + 'alterado com sucesso');
-    } else {
-      this.http.get('http://localhost:8080/').subscribe
-      (data => {
-        this.listaDeCursos = data;
-      });
-      alert(' ERRO ao alterar campos, verifique se não estão vazios');
-    }
-  }
-  listaAtualizada(clavasEvent) {
-    this.listaDeCursos = clavasEvent;
-  }
-*/
 }
 class PrimeCurso implements Curso {
   id: any;

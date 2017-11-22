@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./pesquisa.component.css']
 })
 export class PesquisaComponent implements OnInit {
+
   formCursos: FormGroup;
 
   @Output() clavasEvent = new EventEmitter();
@@ -43,4 +44,15 @@ if (this.formCursos.value.nome !== null) {
 }
 
 }
+
+listarTodos() {
+  this.http.get ('http://localhost:8080/')
+  .subscribe(
+   data => {
+     this.clavasEvent.emit(data);
+   }
+ );
+}
+
+
 }
