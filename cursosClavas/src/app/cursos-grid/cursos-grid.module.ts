@@ -1,12 +1,11 @@
 import { ButtonModule } from 'primeng/components/button/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CursosGridComponent } from './cursos-grid.component';
 import { ConfirmDialogModule, DataTableModule, SharedModule, GrowlModule,
           DialogModule, CodeHighlighterModule, SliderModule } from 'primeng/primeng';
-
 
 @NgModule({
   imports: [
@@ -20,7 +19,8 @@ import { ConfirmDialogModule, DataTableModule, SharedModule, GrowlModule,
     DialogModule,
     CodeHighlighterModule,
     GrowlModule,
-    SliderModule
+    SliderModule,
+    FormsModule
   ],
   declarations: [
     CursosGridComponent

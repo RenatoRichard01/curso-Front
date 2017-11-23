@@ -20,6 +20,7 @@ export class AppComponent implements OnInit  {
         }
       );
     }
+    
     listaAtualizada(evento) {
       this.listaDeCursos = evento;
     }

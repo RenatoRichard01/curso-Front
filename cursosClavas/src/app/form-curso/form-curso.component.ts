@@ -40,17 +40,18 @@ export class FormCursoComponent implements OnInit {
       );
       this.resetaForm();
     } else {
-      alert('erro!');
+      this.erroAdiciona();
     }
   }
 
   adicionado(): void {
     this.msgs = [];
-    this.msgs.push({severity: 'success', summary: 'Success', detail: 'Curso adicionado'});
+    this.msgs.push({severity: 'success', summary: 'Success', detail: 'Curso ' + this.nome + ' adicionado'});
 }
   erroAdiciona(): void {
     this.msgs = [];
-    this.msgs.push({severity: 'error', detail: 'Curso não foi adicionado. Possivel problema no servidor'});
+    this.msgs.push({severity: 'error', detail: 'Curso não foi adicionado.' +
+     'Possivel problema no servidor ou campo(os) vazio(os)'});
   }
 
 }

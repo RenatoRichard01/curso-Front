@@ -9,10 +9,14 @@
       </p-header>
       <p-column field="id" header="id" [sortable]="true"></p-column>
       <p-column field="nome" header="Descrição" [sortable]="true"></p-column>
-      <p-column field="duracao" header="Duração" [sortable]="true"></p-column>
-      <ng-template pTemplate="paginatorLeft">
-          <button type="button" pButton icon="fa-refresh"></button>
-      </ng-template>
+      <p-column field="duracao" header="Duração(Hrs)({{yearFilter||'No Filter'}})"
+      [filter]="true" filterMatchMode="equals" [sortable]="true">
+        <ng-template pTemplate="filter" let-col>
+            <i class="fa fa-close" (click)="yearFilter=null;dt.filter(null,col.field,col.filterMatchMode)"></i>
+            <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="10" [max]="100" (onChange)="onYearChange($event, dt, col)"></p-slider>
+        </ng-template>
+      </p-column>
+
 </p-dataTable>
 
 <p-dialog header="Faça mudanças" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" *ngIf="curso">
@@ -20,7 +24,8 @@
       <div class="ui-grid-row">
           <div class="ui-grid-col-4"><label for="id">id</label></div>
           <div class="ui-grid-col-8">
-            <input pInputText id="id" formControlName="id"[(ngModel)]="curso.id"/>
+            <input pInputText id="id" formControlName="id"
+            pTooltip="Não pode ser alterado" [(ngModel)]="curso.id" required/>
           </div>
       </div>
       <div class="ui-grid-row">
@@ -28,7 +33,8 @@
             <label for="nome">Descrição</label>
           </div>
           <div class="ui-grid-col-8">
-            <input pInputText id="nome" formControlName="nome" [(ngModel)]="curso.nome" />
+            <input pInputText type="text" id="nome" formControlName="nome"
+            pTooltip="Nome do Curso" [(ngModel)]="curso.nome" />
           </div>
       </div>
       <div class="ui-grid-row">
@@ -36,7 +42,8 @@
             <label for="duracao">Duracao</label>
           </div>
           <div class="ui-grid-col-8">
-            <input pInputText id="duracao" formControlName="duracao" [(ngModel)]="curso.duracao" />
+            <input pInputText type="number" id="duracao" formControlName="duracao"
+             pTooltip="Duração do curso" [(ngModel)]="curso.duracao" />
           </div>
       </div>
   </div>
@@ -48,3 +55,4 @@
   </p-footer>
 </p-dialog>
 </form>
+
